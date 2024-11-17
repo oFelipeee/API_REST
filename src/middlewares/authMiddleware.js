@@ -1,13 +1,18 @@
-// middlewares/authMiddleware.js
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config();
 
-module.exports = (req, res, next) => {
-  const token = req.headers['authorization'];
-  if (!token) return res.status(403).json({ error: 'Token não fornecido.' });
+const authMiddleware = (req, res, next) => {
+    const token = req.header('Authorization')?.replace('Bearer ', '');
+    if (!token) return res.status(401).json({ message: 'Acesso não autorizado' });
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) return res.status(401).json({ error: 'Token inválido.' });
-    req.adminId = decoded.id;
-    next();
-  });
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.adminId = decoded.id;
+        next();
+    } catch (err) {
+        return res.status(401).json({ message: 'Token inválido' });
+    }
 };
+
+module.exports = authMiddleware;
