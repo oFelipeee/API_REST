@@ -26,3 +26,7 @@ A API possui as seguintes funcionalidades:
 
 - Node.js (versão >=14)
 - MongoDB (local ou MongoDB Atlas)
+
+##
+
+- Desenvolvido por Felipe Paulino dos Santos
