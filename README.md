@@ -29,4 +29,4 @@ A API possui as seguintes funcionalidades:
 
 ##
 
-- Desenvolvido por Felipe Paulino dos Santos
+Desenvolvido por Felipe Paulino dos Santos
