@@ -27,6 +27,10 @@ A API possui as seguintes funcionalidades:
 - Node.js (versão >=14)
 - MongoDB (local ou MongoDB Atlas)
 
-##
+## 🤝 Contribuições
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
+
+## 📝 Licença
+Este projeto está sob a licença MIT. Sinta-se livre para usá-lo como desejar.
 
 Desenvolvido por Felipe Paulino dos Santos
