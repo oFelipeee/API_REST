@@ -31,3 +31,5 @@ API REST, um projeto robusto e escalável desenvolvido em Node.js com Express, p
 
 ## 🤝 Contribuições
 Faça um fork do projeto.
+
+Desenvolvido por **Felipe Paulino dos Santos**
