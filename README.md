@@ -23,10 +23,10 @@ API REST, um projeto robusto e escalável desenvolvido em Node.js com Express, p
   <img align="center" alt="css" src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge" />
   <img align="center" alt="js" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" />
 
-MongoDB com Mongoose
-JWT para autenticação
-Dotenv para variáveis de ambiente
-Joi para validação
+- MongoDB com Mongoose
+- JWT para autenticação
+- Dotenv para variáveis de ambiente
+- Joi para validação
 
 
 ## 🤝 Contribuições
