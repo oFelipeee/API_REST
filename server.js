@@ -1,42 +1,49 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const clienteRoutes = require('./src/routes/clienteRoutes');
-const contaRoutes = require('./src/routes/contaRoutes');
-const transacaoRoutes = require('./src/routes/transacaoRoutes');
-const notificacaoRoutes = require('./src/routes/notificacaoRoutes');
-const adminRoutes = require('./src/routes/adminRoutes');
-const errorHandler = require('./src/middlewares/errorHandler');
-
-dotenv.config();
+const sequelize = require('./src/config/config');
+const routes = require('./src/router/router');
+const clienteRoutes = require('./src/router/clienteRoutes');
+const adminRoutes = require('./src/router/adminRoutes');
+const contasRoutes = require('./src/router/contasRoutes');
+const notificacoesRoutes = require('./src/router/notificacoesRoutes');
+const transacoesRoutes = require('./src/router/transacoesRoutes');
 
 const app = express();
+
 app.use(express.json());
 
-// Conexão com o banco de dados MongoDB
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Conectado ao MongoDB'))
-  .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
+app.use('/api', routes);
+app.use('/cliente', clienteRoutes);
 
-// Definindo as rotas
-app.use('/api/clientes', clienteRoutes);
-app.use('/api/contas', contaRoutes);
-app.use('/api/transacoes', transacaoRoutes);
-app.use('/api/notificacoes', notificacaoRoutes);
-app.use('/api/admin', adminRoutes);
+app.use('/admin', adminRoutes);
 
-// Middleware de tratamento de erros
-app.use(errorHandler);
+app.use('/contas', contasRoutes);
 
-// Iniciando o servidor
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`=================================================`);
-  console.log(`=================================================`);
-  console.log(`=================================================`);
-  console.log(`      👾  Estamos vivos na porta ${PORT}  👾`);
-  console.log(`=================================================`);
-  console.log(`=================================================`);
-  console.log(`=================================================`);
+app.use('/notificacoes', notificacoesRoutes);
 
+app.use('/transacoes', transacoesRoutes);
+
+app.get('/healthcheck', (req, res) => {
+  return res.status(200).json({
+    msg: 'Estamos Vivos!',
+    alive: true,
+
+  })
 });
+
+sequelize.authenticate()
+  .then(() => {
+    console.log('Conexão estabelecida com sucesso!');
+
+    return sequelize.sync();
+  })
+  .then(() => {
+    app.listen(3000, (req, res) => {
+      console.log('---------------------------------')
+      console.log('Estamos rodando na porta 3000')
+      console.log('---------------------------------')
+    });
+  })
+
+  .catch((error) => {
+    console.error('Erro ao se conectar com o banco:', error);
+  })

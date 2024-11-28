@@ -1,50 +1,50 @@
-const adminService = require('../service/administradoresService');
+const transacoesService = require('../service/transacoesService');
 
-const adminController = {
+const transacoesController = {
     create: async (req, res) => {
         try {
-            const admin = await adminService.create(req.body);
+            const transacao = await transacoesService.create(req.body);
             return res.status(200).json({
-                msg: 'Administrador criado com sucesso',
-                admin
+                msg: 'Transação criada com sucesso',
+                transacao
             });
         } catch (error) {
             return res.status(500).json({
-                msg: 'Erro ao tentar criar o administrador'
+                msg: 'Erro ao tentar criar a transação'
             });
         }
     },
 
     update: async (req, res) => {
         try {
-            const admin = await adminService.update(req.params.id, req.body);
-            if (!admin) {
+            const transacao = await transacoesService.update(req.params.id, req.bodys);
+            if (!transacao) {
                 return res.status(400).json({
-                    msg: 'Administrador não encontrado'
+                    msg: 'Transação não encontrada'
                 });
             }
 
             return res.status(200).json({
-                msg: 'Administrador atualizado com sucesso!'
+                msg: 'Transação atualizada com sucesso!'
             });
         } catch (error) {
             return res.status(500).json({
-                msg: 'Erro ao tentar atualizar o administrador'
+                msg: 'Erro ao tentar atualizar a transação'
             });
         }
     },
 
     getAll: async (req, res) => {
         try {
-            const admins = await adminService.getAll();
-            if (!admins) {
+            const transacoes = await transacoesService.getAll();
+            if (!transacoes) {
                 return res.status(404).json({
-                    msg: 'Nenhum administrador encontrado'
+                    msg: 'Nenhuma transação encontrada'
                 });
             }
             return res.status(200).json({
-                msg: 'Todos os administradores',
-                admins
+                msg: 'Todas as transações',
+                transacoes
             });
         } catch (error) {
             return res.status(500).json({
@@ -55,16 +55,16 @@ const adminController = {
 
     getOne: async (req, res) => {
         try {
-            const admin = await adminService.getById(req.params.id);
-            if (!admin) {
+            const transacao = await transacoesService.getById(req.params.id);
+            if (!transacao) {
                 return res.status(404).json({
-                    msg: 'Administrador não encontrado'
+                    msg: 'Transação não encontrada'
                 });
             }
 
             return res.status(200).json({
-                msg: 'Administrador encontrado',
-                admin
+                msg: 'Transação encontrada',
+                transacao
             });
         } catch (error) {
             return res.status(500).json({
@@ -75,17 +75,16 @@ const adminController = {
 
     delete: async (req, res) => {
         try {
-            const admin = await adminService.delete(req.params.id);
-            if (!admin) {
+            const transacao = await transacoesService.delete(req.params.id);
+            if (!transacao) {
                 return res.status(404).json({
-                    msg: 'Administrador não encontrado'
+                    msg: 'Transação não encontrada'
                 });
             }
 
-            await admin.destroy();
             return res.status(200).json({
-                msg: 'Administrador encontrado e deletado com sucesso!',
-                admin
+                msg: 'Transação encontrada e deletada com sucesso!',
+                transacao
             });
         } catch (error) {
             return res.status(500).json({
@@ -95,4 +94,4 @@ const adminController = {
     }
 };
 
-module.exports = adminController;
+module.exports = transacoesController;

@@ -1,50 +1,50 @@
-const adminService = require('../service/administradoresService');
+const notificacoesService = require('../service/notificacoesService');
 
-const adminController = {
+const notificacoesController = {
     create: async (req, res) => {
         try {
-            const admin = await adminService.create(req.body);
+            const notificacao = await notificacoesService.create(req.body);
             return res.status(200).json({
-                msg: 'Administrador criado com sucesso',
-                admin
+                msg: 'Notificação criada com sucesso',
+                notificacao
             });
         } catch (error) {
             return res.status(500).json({
-                msg: 'Erro ao tentar criar o administrador'
+                msg: 'Erro ao tentar criar a notificação'
             });
         }
     },
 
     update: async (req, res) => {
         try {
-            const admin = await adminService.update(req.params.id, req.body);
-            if (!admin) {
+            const notificacao = await notificacoesService.update(req.params.id, req.body);
+            if (!notificacao) {
                 return res.status(400).json({
-                    msg: 'Administrador não encontrado'
+                    msg: 'Notificação não encontrada'
                 });
             }
 
             return res.status(200).json({
-                msg: 'Administrador atualizado com sucesso!'
+                msg: 'Notificação atualizada com sucesso!'
             });
         } catch (error) {
             return res.status(500).json({
-                msg: 'Erro ao tentar atualizar o administrador'
+                msg: 'Erro ao tentar atualizar a notificação'
             });
         }
     },
 
     getAll: async (req, res) => {
         try {
-            const admins = await adminService.getAll();
-            if (!admins) {
+            const notificacoes = await notificacoesService.getAll();
+            if (!notificacoes) {
                 return res.status(404).json({
-                    msg: 'Nenhum administrador encontrado'
+                    msg: 'Nenhuma notificação encontrada'
                 });
             }
             return res.status(200).json({
-                msg: 'Todos os administradores',
-                admins
+                msg: 'Todas as notificações',
+                notificacoes
             });
         } catch (error) {
             return res.status(500).json({
@@ -55,16 +55,16 @@ const adminController = {
 
     getOne: async (req, res) => {
         try {
-            const admin = await adminService.getById(req.params.id);
-            if (!admin) {
+            const notificacao = await notificacoesService.getById(req.params.id);
+            if (!notificacao) {
                 return res.status(404).json({
-                    msg: 'Administrador não encontrado'
+                    msg: 'Notificação não encontrada'
                 });
             }
 
             return res.status(200).json({
-                msg: 'Administrador encontrado',
-                admin
+                msg: 'Notificação encontrada',
+                notificacao
             });
         } catch (error) {
             return res.status(500).json({
@@ -75,17 +75,16 @@ const adminController = {
 
     delete: async (req, res) => {
         try {
-            const admin = await adminService.delete(req.params.id);
-            if (!admin) {
+            const notificacao = await notificacoesService.delete(req.params.id);
+            if (!notificacao) {
                 return res.status(404).json({
-                    msg: 'Administrador não encontrado'
+                    msg: 'Notificação não encontrada'
                 });
             }
 
-            await admin.destroy();
             return res.status(200).json({
-                msg: 'Administrador encontrado e deletado com sucesso!',
-                admin
+                msg: 'Notificação encontrada e deletada com sucesso!',
+                notificacao
             });
         } catch (error) {
             return res.status(500).json({
@@ -95,4 +94,4 @@ const adminController = {
     }
 };
 
-module.exports = adminController;
+module.exports = notificacoesController;

@@ -1,36 +1,33 @@
-## 💻 API de Gerenciamento de Transações e Contas
+## 🌐 API REST
+API REST, um projeto robusto e escalável desenvolvido em Node.js com Express, projetado para operações CRUD e autenticação segura. Ideal para integração com aplicações web ou mobile.
 
-Esta é uma API REST para gerenciar transações financeiras, contas de clientes, notificações e autenticação de administradores. A API foi construída com **Node.js**, **Express**, **MongoDB** e utiliza **JWT** para autenticação e **Nodemailer** para envio de notificações por e-mail.
+## 🛠 Principais Recursos
+- CRUD Completo: Gerencie dados com endpoints claros.
+- Autenticação JWT: Segurança garantida com tokens.
+- Banco de Dados MongoDB: Integração com Mongoose.
+- Validação Avançada: Implementada com Joi.
 
-## ✅ Funcionalidades
+## 🔑 Autenticação
+- POST /auth/login - Login e geração de token.
+- POST /auth/register - Registro de usuários.
+- 📊 CRUD
+- GET /items - Listar todos os itens.
+- POST /items - Criar um novo item.
+- GET /items/:id - Obter detalhes de um item.
+- PUT /items/:id - Atualizar um item existente.
+- DELETE /items/:id - Deletar um item.
 
-A API possui as seguintes funcionalidades:
+## 🧰 Tecnologias Utilizadas
+<div style="display: inline_block">
+  <img align="center" alt="html5" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" />
+  <img align="center" alt="css" src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge" />
+  <img align="center" alt="js" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" />
 
-- **Autenticação de Administrador**: Permite que administradores façam login e recebam um token JWT.
-- **Gerenciamento de Clientes**: Permite criar e listar clientes.
-- **Gerenciamento de Contas**: Permite criar contas e listar as contas existentes.
-- **Gerenciamento de Transações**: Permite registrar transações de débito e crédito, além de atualizar o saldo das contas.
-- **Envio de Notificações**: Envia notificações por e-mail aos clientes sobre transações realizadas.
+MongoDB com Mongoose
+JWT para autenticação
+Dotenv para variáveis de ambiente
+Joi para validação
 
-## 👾 Tecnologias Utilizadas
-
-- **Node.js**: Ambiente de execução para JavaScript no backend.
-- **Express**: Framework para construção da API.
-- **MongoDB**: Banco de dados NoSQL para armazenamento de dados.
-- **Mongoose**: ODM (Object Data Modeling) para MongoDB.
-- **JWT (JSON Web Tokens)**: Para autenticação e autorização.
-- **Bcryptjs**: Para criptografar senhas.
-- **Nodemailer**: Para envio de e-mails de notificação.
-
-## 📗 Requisitos
-
-- Node.js (versão >=14)
-- MongoDB (local ou MongoDB Atlas)
 
 ## 🤝 Contribuições
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
-
-## 📝 Licença
-Este projeto está sob a licença MIT. Sinta-se livre para usá-lo como desejar.
-
-Desenvolvido por Felipe Paulino dos Santos
+Faça um fork do projeto.
